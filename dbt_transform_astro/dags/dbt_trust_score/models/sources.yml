@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: raw
+    database: TRUST_SCORE
+    schema: RAW
+    tables:
+      - name: analyzed_tweets
+      - name: btc_data

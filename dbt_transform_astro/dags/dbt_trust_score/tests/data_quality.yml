@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: raw
+    database: TRUST_SCORE
+    schema: RAW
+    tables:
+      - name: btc_data
+      - name: analyzed_tweets
+
+models:
+  - name: btc_analytics
+    columns:
+      - name: DATE
+        tests:
+          - not_null
+      - name: CLOSE
+        tests:
+          - not_null
+  - name: tweets_analytics
+    columns:
+      - name: USERNAME
+        tests:
+          - not_null
+      - name: POST
+        tests:
+          - not_null

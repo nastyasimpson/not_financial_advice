@@ -1,0 +1,102 @@
+[0m14:21:17.233866 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105503cd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10551a090>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10551a990>]}
+
+
+============================== 14:21:17.237006 | f6248ace-4b12-4f2f-9786-12cbc882a778 ==============================
+[0m14:21:17.237006 [info ] [MainThread]: Running with dbt=1.9.1
+[0m14:21:17.237385 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/Users/anastasiasimpson/.dbt', 'version_check': 'True', 'debug': 'False', 'log_path': 'logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt init trust_score_pipe', 'log_format': 'default', 'introspect': 'True', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m14:21:17.248759 [debug] [MainThread]: Starter project path: /Users/anastasiasimpson/Desktop/dataexpert/capstone2025/capstone_project/.venv/lib/python3.11/site-packages/dbt/include/starter_project
+[0m14:21:17.255947 [info ] [MainThread]: 
+Your new dbt project "trust_score_pipe" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m14:21:17.256181 [info ] [MainThread]: Setting up your profile.
+[0m14:24:04.371776 [error] [MainThread]: Encountered an error:
+
+[0m14:24:04.392500 [error] [MainThread]: Traceback (most recent call last):
+  File "/Users/anastasiasimpson/Desktop/dataexpert/capstone2025/capstone_project/.venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 153, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/anastasiasimpson/Desktop/dataexpert/capstone2025/capstone_project/.venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 103, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/anastasiasimpson/Desktop/dataexpert/capstone2025/capstone_project/.venv/lib/python3.11/site-packages/dbt/cli/main.py", line 477, in init
+    results = task.run()
+              ^^^^^^^^^^
+  File "/Users/anastasiasimpson/Desktop/dataexpert/capstone2025/capstone_project/.venv/lib/python3.11/site-packages/dbt/task/init.py", line 346, in run
+    self.setup_profile(profile_name)
+  File "/Users/anastasiasimpson/Desktop/dataexpert/capstone2025/capstone_project/.venv/lib/python3.11/site-packages/dbt/task/init.py", line 262, in setup_profile
+    self.create_profile_from_target(adapter, profile_name=profile_name)
+  File "/Users/anastasiasimpson/Desktop/dataexpert/capstone2025/capstone_project/.venv/lib/python3.11/site-packages/dbt/task/init.py", line 179, in create_profile_from_target
+    self.create_profile_from_profile_template(profile_template, profile_name)
+  File "/Users/anastasiasimpson/Desktop/dataexpert/capstone2025/capstone_project/.venv/lib/python3.11/site-packages/dbt/task/init.py", line 163, in create_profile_from_profile_template
+    target = self.generate_target_from_input(prompts, initial_target)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/anastasiasimpson/Desktop/dataexpert/capstone2025/capstone_project/.venv/lib/python3.11/site-packages/dbt/task/init.py", line 129, in generate_target_from_input
+    target[key] = click.prompt(
+                  ^^^^^^^^^^^^^
+  File "/Users/anastasiasimpson/Desktop/dataexpert/capstone2025/capstone_project/.venv/lib/python3.11/site-packages/click/termui.py", line 164, in prompt
+    value = prompt_func(prompt)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/Users/anastasiasimpson/Desktop/dataexpert/capstone2025/capstone_project/.venv/lib/python3.11/site-packages/click/termui.py", line 147, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+[0m14:24:04.793163 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": false, "command_wall_clock_time": 167.61444, "process_in_blocks": "0", "process_kernel_time": 2.681836, "process_mem_max_rss": "185827328", "process_out_blocks": "0", "process_user_time": 1.491815}
+[0m14:24:04.794762 [debug] [MainThread]: Command `dbt init` failed at 14:24:04.794535 after 167.62 seconds
+[0m14:24:04.796324 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105502a50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105926090>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105542910>]}
+[0m14:24:04.797608 [debug] [MainThread]: Flushing usage events
+[0m14:24:05.319900 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m14:24:08.842745 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1072b1510>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107446210>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107446b50>]}
+
+
+============================== 14:24:08.846409 | 9f542a30-b3f0-4381-b8ef-372a1cee337d ==============================
+[0m14:24:08.846409 [info ] [MainThread]: Running with dbt=1.9.1
+[0m14:24:08.847159 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'version_check': 'True', 'log_path': 'logs', 'profiles_dir': '/Users/anastasiasimpson/.dbt', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'introspect': 'True', 'log_format': 'default', 'target_path': 'None', 'invocation_command': 'dbt init trust_score_pipe', 'send_anonymous_usage_stats': 'True'}
+[0m14:24:08.858901 [info ] [MainThread]: A project called trust_score_pipe already exists here.
+[0m14:24:08.859996 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 0.06499017, "process_in_blocks": "0", "process_kernel_time": 0.186274, "process_mem_max_rss": "110444544", "process_out_blocks": "0", "process_user_time": 0.633794}
+[0m14:24:08.860315 [debug] [MainThread]: Command `dbt init` succeeded at 14:24:08.860255 after 0.07 seconds
+[0m14:24:08.860561 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1073a5fd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1074578d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x102bce890>]}
+[0m14:24:08.860773 [debug] [MainThread]: Flushing usage events
+[0m14:24:09.235265 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m14:29:10.079809 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104a1e9d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104a24d50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104a32390>]}
+
+
+============================== 14:29:10.082787 | 59d70ae0-d932-40c5-acee-af89b5a5cddb ==============================
+[0m14:29:10.082787 [info ] [MainThread]: Running with dbt=1.9.1
+[0m14:29:10.083128 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'profiles_dir': '/Users/anastasiasimpson/.dbt', 'log_path': 'logs', 'fail_fast': 'False', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt init trust_score_pipeline', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m14:29:10.092246 [debug] [MainThread]: Starter project path: /Users/anastasiasimpson/Desktop/dataexpert/capstone2025/capstone_project/.venv/lib/python3.11/site-packages/dbt/include/starter_project
+[0m14:29:10.100319 [info ] [MainThread]: 
+Your new dbt project "trust_score_pipeline" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m14:29:10.100560 [info ] [MainThread]: Setting up your profile.
+[0m14:35:56.135109 [info ] [MainThread]: Profile trust_score_pipeline written to /Users/anastasiasimpson/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m14:35:56.156413 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 406.122, "process_in_blocks": "0", "process_kernel_time": 2.754893, "process_mem_max_rss": "192331776", "process_out_blocks": "0", "process_user_time": 1.347478}
+[0m14:35:56.158767 [debug] [MainThread]: Command `dbt init` succeeded at 14:35:56.158400 after 406.13 seconds
+[0m14:35:56.161806 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104a1e310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1049a9ed0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1046bdad0>]}
+[0m14:35:56.162909 [debug] [MainThread]: Flushing usage events
+[0m14:35:56.682315 [debug] [MainThread]: An error was encountered while trying to flush usage events

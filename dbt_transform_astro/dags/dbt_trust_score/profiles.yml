@@ -1,0 +1,15 @@
+trust_score_pipeline:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: RVUMBRX-RZ24531
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: ACCOUNTADMIN
+      database: TRUST_SCORE
+      schema: RAW_ANALYTICS
+      warehouse: NINA_WAREHOUSE
+      connect_retries: 5
+      threads: 1
+      host: RVUMBRX-RZ24531.snowflakecomputing.com
