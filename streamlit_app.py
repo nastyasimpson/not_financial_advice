@@ -61,13 +61,13 @@ influencers = st.sidebar.multiselect("Select Influencers",
 
 # Snowflake connection using secrets
 conn = snowflake.connector.connect(
-    account=st.secrets["SNOWFLAKE_ACCOUNT"],
-    user=st.secrets["SNOWFLAKE_USER"],
-    password=st.secrets["SNOWFLAKE_PASSWORD"],
-    role=st.secrets["SNOWFLAKE_ROLE"],
-    database=st.secrets["SNOWFLAKE_DATABASE"],
-    schema=st.secrets["SNOWFLAKE_SCHEMA"],
-    warehouse=st.secrets["SNOWFLAKE_WAREHOUSE"]
+    account='RVUMBRX-RZ24531',
+    user='NINATAFT',
+    password='MamaSasha51384Kakashka$',  # Update if using SSO
+    role='ACCOUNTADMIN',
+    database='TRUST_SCORE',
+    schema='raw_ANALYTICS',  # Matches case sensitivity for pre-dbt raw tables
+    warehouse='NINA_WAREHOUSE'
 )
 
 # Visualization 1: Influencer Accuracy Leaderboard
@@ -214,36 +214,36 @@ else:
     st.plotly_chart(fig_daily, use_container_width=True)
 
 # Visualization 5: Bitcoin Weekly (Fixed)
-st.subheader("Bitcoin Weekly")
-btc_query_weekly = f"""
-SELECT DATE_TRUNC('week', DATE) AS week_start, AVG(CLOSE) AS weekly_price
-FROM TRUST_SCORE.raw_ANALYTICS.BTC_ANALYTICS
-WHERE DATE BETWEEN '{date_range[0].strftime('%Y-%m-%d')}' AND '{date_range[1].strftime('%Y-%m-%d')}'
-GROUP BY DATE_TRUNC('week', DATE)
-ORDER BY week_start
-"""
-btc_weekly_df = pd.read_sql(btc_query_weekly, conn)
+# st.subheader("Bitcoin Weekly")
+# btc_query_weekly = f"""
+# SELECT DATE_TRUNC('week', DATE) AS week_start, AVG(CLOSE) AS weekly_price
+# FROM TRUST_SCORE.raw_ANALYTICS.BTC_ANALYTICS
+# WHERE DATE BETWEEN '{date_range[0].strftime('%Y-%m-%d')}' AND '{date_range[1].strftime('%Y-%m-%d')}'
+# GROUP BY DATE_TRUNC('week', DATE)
+# ORDER BY week_start
+# """
+# btc_weekly_df = pd.read_sql(btc_query_weekly, conn)
 
-if btc_weekly_df.empty:
-    st.error("No weekly Bitcoin data.")
-else:
-    btc_weekly_df['week_start'] = pd.to_datetime(btc_weekly_df['week_start'], errors='coerce')
-    btc_weekly_df['weekly_price'] = pd.to_numeric(btc_weekly_df['weekly_price'], errors='coerce')
-    btc_weekly_df = btc_weekly_df.dropna(subset=['week_start', 'weekly_price'])
+# if btc_weekly_df.empty:
+#     st.error("No weekly Bitcoin data.")
+# else:
+#     btc_weekly_df['week_start'] = pd.to_datetime(btc_weekly_df['week_start'], errors='coerce')
+#     btc_weekly_df['weekly_price'] = pd.to_numeric(btc_weekly_df['weekly_price'], errors='coerce')
+#     btc_weekly_df = btc_weekly_df.dropna(subset=['week_start', 'weekly_price'])
 
-    fig_weekly = px.line(btc_weekly_df, x='week_start', y='weekly_price', title="Bitcoin Weekly Price Trend 📈",
-                         line_shape='linear', color_discrete_sequence=['#1DA1F2'])
-    fig_weekly.update_layout(
-        plot_bgcolor='#1A1A1A',
-        paper_bgcolor='#1A1A1A',
-        font=dict(color='#FFFFFF'),
-        xaxis=dict(showgrid=False, title='Week Start'),
-        yaxis=dict(showgrid=False, title='Price ($)'),
-        height=400,
-        width=1500,
-        margin=dict(l=10, r=10, t=40, b=20)
-    )
-    st.plotly_chart(fig_weekly, use_container_width=True)
+#     fig_weekly = px.line(btc_weekly_df, x='week_start', y='weekly_price', title="Bitcoin Weekly Price Trend 📈",
+#                          line_shape='linear', color_discrete_sequence=['#1DA1F2'])
+#     fig_weekly.update_layout(
+#         plot_bgcolor='#1A1A1A',
+#         paper_bgcolor='#1A1A1A',
+#         font=dict(color='#FFFFFF'),
+#         xaxis=dict(showgrid=False, title='Week Start'),
+#         yaxis=dict(showgrid=False, title='Price ($)'),
+#         height=400,
+#         width=1500,
+#         margin=dict(l=10, r=10, t=40, b=20)
+#     )
+#     st.plotly_chart(fig_weekly, use_container_width=True)
 
 # Visualization 6: Daily Influencer Sentiment Scores (Fixed Indentation)
 st.subheader("Daily Influencer Sentiment Scores")
