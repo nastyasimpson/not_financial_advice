@@ -23,19 +23,21 @@ In today’s crypto landscape, X influencers shape Bitcoin sentiment, often with
 
 ## ⚙️ How It Works  
 ### Pipeline Architecture  
-```mermaid
-graph TD
-    A[Polygon API<br>BTC Prices] --> B[Amazon S3]
-    C[X API<br>Influencer Posts] --> D[LLM Sentiment Scoring] --> B
-    B --> E[Snowflake<br>Snowpipe Ingestion]
-    E --> F[dbt Transformations]
-    F --> G[Streamlit App<br>Trust Score Dashboard]
-    H[Airflow<br>Orchestration] --> A & C & F
+Ambition to build a robust pipeline that turns raw crypto data into actionable insights. 
 
-## ⚙️ How It Works  
-*Led by Anastasia Simpson and Team*  
-
-I help lead this project, guiding a robust pipeline that turns raw crypto data into actionable insights. Here’s the breakdown:  
+### Pipeline Breakdown  
+- **Polygon API (BTC Prices)** → **Amazon S3**  
+  - Fetches real-time Bitcoin price data and stages it securely.  
+- **X API (Influencer Posts)** → **LLM Sentiment Scoring using Langchain** → **Amazon S3**  
+  - Pulls posts, scores them (1–10: Sell to Buy), and stores the results.  
+- **Amazon S3** → **Snowflake (Snowpipe Ingestion)**  
+  - Seamlessly ingests data into Snowflake’s cloud warehouse.  
+- **Snowflake** → **dbt Transformations**  
+  - Refines raw data into analytics-ready tables.  
+- **dbt Transformations** → **Streamlit App (Trust Score Dashboard)**  
+  - Powers the live, interactive dashboard on Streamlit Cloud.  
+- **Airflow (Orchestration)**  
+  - Automates and connects the flow, targeting Polygon, X, and dbt steps.  
 
 - **Data Sources**: Polygon for BTC prices, X for influencer sentiment.  
 - **Processing**: LLMs score posts (1–10: Sell to Buy), staged in S3.  
@@ -43,14 +45,12 @@ I help lead this project, guiding a robust pipeline that turns raw crypto data i
 - **Transformation**: dbt refines data into analytics-ready tables.  
 - **Visualization**: Streamlit Cloud hosts the live dashboard.  
 
-**Status**: Bulk pipeline complete (Jan–Mar 2025); daily increments in development via Astronomer.
-
 ---
 
 ## 🎯 Key Features  
 - **Dynamic Trust Score**: Reflects prediction accuracy and sentiment trends.  
 - **Real-Time Insights**: Daily BTC prices paired with influencer recommendations.  
-- **Interactive Dashboard**: Live on [Streamlit Cloud](https://not-financial-advice.streamlit.app).  
+- **Interactive Dashboard**: Live on [Streamlit Cloud](https://notfinancialadvice.streamlit.app/).  
 - **Rock-Solid Data**: dbt enforces rigorous quality checks at every step.
 
 ## 🛠️ Tech Stack: The Powerhouse Behind the Project  
