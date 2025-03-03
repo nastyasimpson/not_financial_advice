@@ -60,14 +60,15 @@ influencers = st.sidebar.multiselect("Select Influencers",
                                     default=['BitcoinMagazine', 'TheMoonCarl', 'WhalePanda', 'CoinTelegraph'])
 
 # Snowflake connection using secrets
+private_key_content = st.secrets["snowflake"]["private_key_file_content"].encode()
 conn = snowflake.connector.connect(
-    account=st.secrets["SNOWFLAKE_ACCOUNT"],
-    user=st.secrets["SNOWFLAKE_USER"],
-    password=st.secrets["SNOWFLAKE_PASSWORD"],
-    role=st.secrets["SNOWFLAKE_ROLE"],
-    database=st.secrets["SNOWFLAKE_DATABASE"],
-    schema=st.secrets["SNOWFLAKE_SCHEMA"],
-    warehouse=st.secrets["SNOWFLAKE_WAREHOUSE"]
+    account=st.secrets["snowflake"]["account"],
+    user=st.secrets["snowflake"]["user"],
+    private_key=private_key_content,
+    role=st.secrets["snowflake"]["role"],
+    database=st.secrets["snowflake"]["database"],
+    schema=st.secrets["snowflake"]["schema"],
+    warehouse=st.secrets["snowflake"]["warehouse"]
 )
 
 # Visualization 1: Influencer Accuracy Leaderboard
