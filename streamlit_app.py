@@ -61,13 +61,13 @@ influencers = st.sidebar.multiselect("Select Influencers",
 
 # Snowflake connection using secrets
 conn = snowflake.connector.connect(
-    account='RVUMBRX-RZ24531',
-    user='NINATAFT',
-    password='MamaSasha51384Kakashka$',  # Update if using SSO
-    role='ACCOUNTADMIN',
-    database='TRUST_SCORE',
-    schema='raw_ANALYTICS',  # Matches case sensitivity for pre-dbt raw tables
-    warehouse='NINA_WAREHOUSE'
+    account=st.secrets["SNOWFLAKE_ACCOUNT"],
+    user=st.secrets["SNOWFLAKE_USER"],
+    password=st.secrets["SNOWFLAKE_PASSWORD"],
+    role=st.secrets["SNOWFLAKE_ROLE"],
+    database=st.secrets["SNOWFLAKE_DATABASE"],
+    schema=st.secrets["SNOWFLAKE_SCHEMA"],
+    warehouse=st.secrets["SNOWFLAKE_WAREHOUSE"]
 )
 
 # Visualization 1: Influencer Accuracy Leaderboard
