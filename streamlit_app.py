@@ -321,49 +321,49 @@ else:
                  use_container_width=True, height=400)
 
 # Visualization 8: Bitcoin Price vs. Sentiment Trends
-st.subheader("Bitcoin Price vs. Sentiment Trends")
-btc_query = f"""
-SELECT DATE, CLOSE
-FROM TRUST_SCORE.raw_ANALYTICS.BTC_ANALYTICS
-WHERE DATE BETWEEN '{date_range[0].strftime('%Y-%m-%d')}' AND '{date_range[1].strftime('%Y-%m-%d')}'
-"""
-sentiment_trend_query = f"""
-SELECT DATE, AVG(SENTIMENT_SCORE) AS avg_sentiment
-FROM TRUST_SCORE.raw_ANALYTICS.TRUST_SCORE_ANALYTICS
-WHERE DATE BETWEEN '{date_range[0].strftime('%Y-%m-%d')}' AND '{date_range[1].strftime('%Y-%m-%d')}' 
-    {'AND USERNAME IN (' + ','.join(f"'{i}'" for i in influencers) + ')' if influencers else ''}
-GROUP BY DATE
-ORDER BY DATE
-"""
-btc_df = pd.read_sql(btc_query, conn)
-sentiment_trend_df = pd.read_sql(sentiment_trend_query, conn)
+# st.subheader("Bitcoin Price vs. Sentiment Trends")
+# btc_query = f"""
+# SELECT DATE, CLOSE
+# FROM TRUST_SCORE.raw_ANALYTICS.BTC_ANALYTICS
+# WHERE DATE BETWEEN '{date_range[0].strftime('%Y-%m-%d')}' AND '{date_range[1].strftime('%Y-%m-%d')}'
+# """
+# sentiment_trend_query = f"""
+# SELECT DATE, AVG(SENTIMENT_SCORE) AS avg_sentiment
+# FROM TRUST_SCORE.raw_ANALYTICS.TRUST_SCORE_ANALYTICS
+# WHERE DATE BETWEEN '{date_range[0].strftime('%Y-%m-%d')}' AND '{date_range[1].strftime('%Y-%m-%d')}' 
+#     {'AND USERNAME IN (' + ','.join(f"'{i}'" for i in influencers) + ')' if influencers else ''}
+# GROUP BY DATE
+# ORDER BY DATE
+# """
+# btc_df = pd.read_sql(btc_query, conn)
+# sentiment_trend_df = pd.read_sql(sentiment_trend_query, conn)
 
-if btc_df.empty or sentiment_trend_df.empty:
-    st.error("No data for price vs. sentiment trends.")
-else:
-    btc_df['DATE'] = pd.to_datetime(btc_df['DATE'], errors='coerce')
-    btc_df['CLOSE'] = pd.to_numeric(btc_df['CLOSE'], errors='coerce')
-    sentiment_trend_df['DATE'] = pd.to_datetime(sentiment_trend_df['DATE'], errors='coerce')
-    sentiment_trend_df['avg_sentiment'] = pd.to_numeric(sentiment_trend_df['avg_sentiment'], errors='coerce')
-    btc_df = btc_df.dropna(subset=['DATE', 'CLOSE'])
-    sentiment_trend_df = sentiment_trend_df.dropna(subset=['DATE', 'avg_sentiment'])
+# if btc_df.empty or sentiment_trend_df.empty:
+#     st.error("No data for price vs. sentiment trends.")
+# else:
+#     btc_df['DATE'] = pd.to_datetime(btc_df['DATE'], errors='coerce')
+#     btc_df['CLOSE'] = pd.to_numeric(btc_df['CLOSE'], errors='coerce')
+#     sentiment_trend_df['DATE'] = pd.to_datetime(sentiment_trend_df['DATE'], errors='coerce')
+#     sentiment_trend_df['avg_sentiment'] = pd.to_numeric(sentiment_trend_df['avg_sentiment'], errors='coerce')
+#     btc_df = btc_df.dropna(subset=['DATE', 'CLOSE'])
+#     sentiment_trend_df = sentiment_trend_df.dropna(subset=['DATE', 'avg_sentiment'])
 
-    fig_trends = go.Figure()
-    fig_trends.add_trace(go.Scatter(x=btc_df['DATE'], y=btc_df['CLOSE'], mode='lines', name='Bitcoin Price ($)', 
-                                    line=dict(color='#1DA1F2'), yaxis='y2'))
-    fig_trends.add_trace(go.Scatter(x=sentiment_trend_df['DATE'], y=sentiment_trend_df['avg_sentiment'], mode='lines', 
-                                    name='Avg Sentiment', line=dict(color='#FF6B6B')))
-    fig_trends.update_layout(
-        plot_bgcolor='#1A1A1A',
-        paper_bgcolor='#1A1A1A',
-        font=dict(color='#FFFFFF'),
-        xaxis=dict(showgrid=False, title='Date'),
-        yaxis=dict(showgrid=False, title='Sentiment Score'),
-        yaxis2=dict(showgrid=False, title='Price ($)', side='right', overlaying='y'),
-        height=400,
-        width=1500,
-        margin=dict(l=10, r=10, t=40, b=20)
-    )
-    st.plotly_chart(fig_trends, use_container_width=True)
+#     fig_trends = go.Figure()
+#     fig_trends.add_trace(go.Scatter(x=btc_df['DATE'], y=btc_df['CLOSE'], mode='lines', name='Bitcoin Price ($)', 
+#                                     line=dict(color='#1DA1F2'), yaxis='y2'))
+#     fig_trends.add_trace(go.Scatter(x=sentiment_trend_df['DATE'], y=sentiment_trend_df['avg_sentiment'], mode='lines', 
+#                                     name='Avg Sentiment', line=dict(color='#FF6B6B')))
+#     fig_trends.update_layout(
+#         plot_bgcolor='#1A1A1A',
+#         paper_bgcolor='#1A1A1A',
+#         font=dict(color='#FFFFFF'),
+#         xaxis=dict(showgrid=False, title='Date'),
+#         yaxis=dict(showgrid=False, title='Sentiment Score'),
+#         yaxis2=dict(showgrid=False, title='Price ($)', side='right', overlaying='y'),
+#         height=400,
+#         width=1500,
+#         margin=dict(l=10, r=10, t=40, b=20)
+#     )
+#     st.plotly_chart(fig_trends, use_container_width=True)
 
 conn.close()
