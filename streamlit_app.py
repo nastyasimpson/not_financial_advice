@@ -4,6 +4,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import snowflake.connector
+from cryptography.hazmat.primitives import serialization  # Required for key deserialization
+from cryptography.hazmat.backends import default_backend  # Required for backend
 
 # Sidebar styling (X-inspired design)
 st.sidebar.title("Filters")
@@ -58,6 +60,23 @@ date_range = st.sidebar.date_input("Select Date Range", [pd.to_datetime('2025-01
 influencers = st.sidebar.multiselect("Select Influencers", 
                                     options=['BitcoinMagazine', 'TheMoonCarl', 'WhalePanda', 'CoinTelegraph'], 
                                     default=['BitcoinMagazine', 'TheMoonCarl', 'WhalePanda', 'CoinTelegraph'])
+
+# Snowflake connection (updated without passphrase)
+private_key_pem = st.secrets["snowflake"]["private_key_file_content"].encode()
+
+# Deserialize the unencrypted private key
+private_key = serialization.load_pem_private_key(
+    private_key_pem,
+    password=None,  # No passphrase since it’s unencrypted
+    backend=default_backend()
+)
+
+# Convert to DER format for Snowflake
+private_key_der = private_key.private_bytes(
+    encoding=serialization.Encoding.DER,
+    format=serialization.PrivateFormat.PKCS8,
+    encryption_algorithm=serialization.NoEncryption()
+)
 
 # Snowflake connection using secrets
 private_key_content = st.secrets["snowflake"]["private_key_file_content"].encode()
