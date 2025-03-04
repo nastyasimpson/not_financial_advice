@@ -1,8 +1,18 @@
-# Not Financial Advice  
+# Not Financial Advice. Trust Score.
+DataExpert Capstone Project
+by Anastasia Simpson
+
+# Problem Statement:
+In the rapidly evolving cryptocurrency market, social media platforms like X and Youtube have become key sources for Bitcoin price predictions. Influencers offer varying degrees of advice on market trends. However, the credibility of these influencers often goes unchecked. Many preface their opinions with disclaimers such as "not financial advice," yet they still significantly shape public sentiment.
+
+This project seeks to address the growing need for transparency and accountability in cryptocurrency influencer predictions. 
+By developing a dynamic trust score for each influencer, this project aims to provide everyday users with a clear, data-driven understanding of the reliability of Bitcoin price change influencers' predictions. The score will eventually reflect both the historical accuracy of an influencer’s predictions and the consistency of their analysis, helping users make more informed decisions in a volatile and fast-paced market and ultimately make a better decision if they are to follow the **“not financial” financial advice**.
+
+As the crypto landscape continues to evolve, our goal is to empower individuals with the tools they need to assess the credibility of influencers and navigate the complexities of digital currency trends more confidently. And ultimately know: Who are the influencers that are more or less trustworthy in the ocean of misled content?  
+Final Visualization – Streamlit App – Deployed to Streamlit Cloud
+
 **Unveiling Trust in the Chaos of Crypto Predictions**  
 *Your Data-Driven Compass for Bitcoin Influencer Credibility*  
-
-Welcome to **Not Financial Advice**, a DataExpert Capstone by Anastasia Simpson designed to bring clarity to the noisy world of cryptocurrency predictions. This project helps users navigate Bitcoin influencer claims with a dynamic **Trust Score**—a metric that highlights who’s worth listening to amid the flood of "not financial advice" chatter.
 
 ---
 
