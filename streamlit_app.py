@@ -61,29 +61,29 @@ influencers = st.sidebar.multiselect("Select Influencers",
                                     options=['BitcoinMagazine', 'TheMoonCarl', 'WhalePanda', 'CoinTelegraph'], 
                                     default=['BitcoinMagazine', 'TheMoonCarl', 'WhalePanda', 'CoinTelegraph'])
 
-# Snowflake connection (updated without passphrase)
-private_key_pem = st.secrets["snowflake"]["private_key_file_content"].encode()
 
-# Deserialize the unencrypted private key
+# Load private key from Streamlit secrets (PEM format as string)
+private_key_pem = st.secrets["snowflake"]["private_key_file_content"]
+
+# Load the PEM private key and convert to DER format
 private_key = serialization.load_pem_private_key(
-    private_key_pem,
-    password=None,  # No passphrase since it’s unencrypted
+    private_key_pem.encode(),
+    password=None,  # No password for unencrypted key
     backend=default_backend()
 )
 
-# Convert to DER format for Snowflake
+# Serialize to DER format (unencrypted) as bytes
 private_key_der = private_key.private_bytes(
     encoding=serialization.Encoding.DER,
     format=serialization.PrivateFormat.PKCS8,
     encryption_algorithm=serialization.NoEncryption()
 )
 
-# Snowflake connection using secrets
-private_key_content = st.secrets["snowflake"]["private_key_file_content"].encode()
+# Connect to Snowflake with DER-formatted private key
 conn = snowflake.connector.connect(
     account=st.secrets["snowflake"]["account"],
     user=st.secrets["snowflake"]["user"],
-    private_key=private_key_content,
+    private_key=private_key_der,  # Use DER bytes object
     role=st.secrets["snowflake"]["role"],
     database=st.secrets["snowflake"]["database"],
     schema=st.secrets["snowflake"]["schema"],
