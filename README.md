@@ -12,8 +12,8 @@ In today’s crypto landscape, X influencers shape Bitcoin sentiment, often with
 ---
 
 ## 🚀 What We Do  
-- **Capture the Market**: Pulls live and historical Bitcoin data from Polygon API (since Feb 24, 2025).  
-- **Decode the Influencers**: Analyzes X posts from top Bitcoin voices (e.g., TheMoonCarl, WhalePanda) using advanced LLMs.  
+- **Capture the Market**: Pulls live and historical Bitcoin data from Polygon API (since Jan 01, 2025).  
+- **Decode the Influencers**: Analyzes X posts from top Bitcoin voices (e.g., TheMoonCarl, WhalePanda,BitcoinMagazine, CoinTelegraph) using Langchain/OpenAI LLMs.  
 - **Score the Trust**: Builds a **Trust Score** based on prediction accuracy and sentiment reliability.  
 - **Visualize the Truth**: Powers an interactive Streamlit app, live on Streamlit Cloud, with clear, actionable insights.  
 
@@ -60,7 +60,8 @@ We’ve built **Not Financial Advice** on a reliable, scalable stack designed fo
 |--------------------------|----------------------|------------------------------------------------------------------------------------|  
 | **Data Sources**         | **Polygon API**      | Delivers real-time, reliable BTC price data (OHLCV) with top-tier accuracy.        |  
 |                          | **X API + Tweepy**   | Streams influencer posts efficiently, capturing sentiment from the crypto pulse.  |  
-| **Sentiment Analysis**   | **LangChain + OpenAI**| Powers LLM-driven scoring (1–10) for Buy/Sell intent with sharp precision.       |  
+| **BUY/SELL 
+|  Sentiment Analysis**    | **LangChain + OpenAI**| Powers LLM-driven scoring (1–10) for Buy/Sell intent with sharp precision.       |  
 | **Storage & Processing** | **AWS S3 + Boto3**   | Secure, scalable storage for raw and processed data, with tight AWS integration.  |  
 |                          | **Snowflake**        | Cloud-native warehouse with Snowpipe for real-time ingestion and Tasks for automation.|  
 | **Transformation**       | **dbt**              | Modular SQL transforms raw data into analytics-ready tables, with built-in tests. |  
@@ -78,8 +79,6 @@ We’ve built **Not Financial Advice** on a reliable, scalable stack designed fo
 - **Streamlit**: Deploys a sleek UI with minimal fuss, hosted live for instant access.  
 
 **Bold Claim**: *This stack balances simplicity and power—built to deliver today, ready to scale tomorrow.*
-
-
 ---
 
 ### Part 2: Sneak Peek to End
